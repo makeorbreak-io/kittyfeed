@@ -20,8 +20,7 @@ public class FeedMeNowActivity extends AppCompatActivity {
         feedMeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getSadKittyImageView().setVisibility(View.INVISIBLE);
-                getHappyKittyImageView().setVisibility(View.VISIBLE);
+                changeKittyMood();
             }
         });
     }
@@ -32,5 +31,16 @@ public class FeedMeNowActivity extends AppCompatActivity {
     private ImageView getHappyKittyImageView(){
         ImageView happyKittyImageView=(ImageView)findViewById(R.id.happyKitty);
         return happyKittyImageView;
+    }
+
+    private void changeKittyMood(){
+        getSadKittyImageView().setVisibility(View.INVISIBLE);
+        getHappyKittyImageView().setVisibility(View.VISIBLE);
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        getSadKittyImageView().setVisibility(View.VISIBLE);
     }
 }
