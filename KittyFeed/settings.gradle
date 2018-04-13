@@ -1,1 +1,1 @@
-include ':kitty', ':app', ':base', ':instantapp'
+include ':app'
