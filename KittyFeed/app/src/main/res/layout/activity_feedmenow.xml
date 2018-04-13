@@ -45,8 +45,6 @@
             android:id="@+id/imageButton"
             android:layout_width="162dp"
             android:layout_height="105dp"
-            android:background="none"
-            android:backgroundTint="none"
             android:scaleType="fitCenter"
             app:layout_column="6"
             app:layout_row="9"
