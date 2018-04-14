@@ -2,5 +2,6 @@
     <string name="app_name">KittyFeed</string>
     <string name="feed_me_now">Feed Me Now</string>
     <string name="feed_me_later">Feed Me Later</string>
+    <string name="thanks_for_feeding_me">Thanks For The Food</string>
     <string name="main_page_text">Please, feed me</string>
 </resources>

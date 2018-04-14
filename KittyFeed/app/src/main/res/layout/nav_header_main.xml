@@ -4,21 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:gravity="bottom"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:menu="#4ec4f0">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/default_gap"
-        android:text="  Main Menu"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
-
-    <TextView
-        android:id="@+id/kittyFeedText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="  KittyFeed"
-        android:textAppearance="@style/TextAppearance.AppCompat" />
 
 </LinearLayout>
