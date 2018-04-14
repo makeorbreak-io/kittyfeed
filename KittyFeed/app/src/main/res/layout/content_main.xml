@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4ec4f0"
     android:paddingBottom="@dimen/default_gap"
     android:paddingLeft="@dimen/default_gap"
     android:paddingRight="@dimen/default_gap"
-    android:paddingTop="@dimen/default_gap"
-    android:background="@android:color/holo_red_light">
+    android:paddingTop="@dimen/default_gap">
 
     <TextView
         style="@style/AppTheme"
@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="83dp"
         android:text="@string/main_page_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
         android:textColor="@android:color/holo_orange_light"
