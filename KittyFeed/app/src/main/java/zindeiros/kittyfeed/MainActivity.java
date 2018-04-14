@@ -1,68 +1,60 @@
 package zindeiros.kittyfeed;
 
-import android.content.ClipData;
-import android.content.ClipData.Item;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.internal.NavigationMenuItemView;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuView;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ImageButton;
 
 import zindeiros.kittyfeed.feed.Feed;
 
 public class MainActivity extends AppCompatActivity {
-
     /**
-     * FeedMeNow Button Item
+     * ImageButton that represents the Feed Me Now! functionality
      */
-    NavigationMenuItemView feedMeNowItem;
-
+    private ImageButton imageButtonFeedMeNow;
     /**
-     * FeedMeLater Button Item
+     * ImageButton that represents the Feed Me Later functionality
      */
-    NavigationMenuItemView feedMeLaterItem;
-
-    @Override
-    /**
+    private ImageButton imageButtonFeedMeLater;
+    /*
      * Instantiates MainActivity
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //     startActivity(new Intent(MainActivity.this,FeedMeNowActivity.class));
-        configureFeedMeItems();
-        configureFeedMeNowOption();
-        configureFeedMeLaterOption();
+        configureFeedMeNowImageButton();
+        configureFeedMeLaterImageButton();
     }
 
     /**
-     * Configures FeedMeNow MenuItems
+     * Configures the Feed Me Now image button
      */
-    private void configureFeedMeItems() {
-        feedMeNowItem = (NavigationMenuItemView) findViewById(R.id.feed_me_now_item);
-        feedMeLaterItem = (NavigationMenuItemView) findViewById(R.id.feed_me_later_item);
+    private void configureFeedMeNowImageButton(){
+        imageButtonFeedMeNow=findViewById(R.id.btnFeedMeNow);
+        addChangeActivityOnClick(imageButtonFeedMeNow,FeedMeNowActivity.class);
     }
 
     /**
-     * Configures the FeedMeNow menu option
+     * Configures the Feed Me Later image button
      */
-    private void configureFeedMeNowOption() {
-        feedMeNowItem.
-        startActivity(new Intent(MainActivity.this, FeedMeNowActivity.class));
+    private void configureFeedMeLaterImageButton(){
+        imageButtonFeedMeLater=findViewById(R.id.btnFeedMeLater);
+        addChangeActivityOnClick(imageButtonFeedMeLater,FeedMeLaterActivity.class);
     }
 
-
     /**
-     * Configures the FeedMeLater menu option
+     * Adds a change activity listener on a certain ImageButton
+     * @param button ImageButton with the image button that is going to be added the change listener
+     * @param activityClass Class with the activity class that is going to be changed
      */
-    private void configureFeedMeLaterOption() {
-        startActivity(new Intent(MainActivity.this, FeedMeLaterActivity.class));
-
+    private void addChangeActivityOnClick(ImageButton button, final Class activityClass){
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,activityClass));
+            }
+        });
     }
 }
