@@ -4,4 +4,6 @@
     <string name="feed_me_later">Feed Me Later</string>
     <string name="thanks_for_feeding_me">Thanks For The Food</string>
     <string name="main_page_text">Please, feed me</string>
+    <string name="beginning_hour">Choose the beginning hour:</string>
+    <string name="choose_the_interval">Choose the time interval:</string>
 </resources>

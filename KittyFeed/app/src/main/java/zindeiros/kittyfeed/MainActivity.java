@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
      * Configures the FeedMeNow menu option
      */
     private void configureFeedMeNowOption() {
-        feedMeNowItem.
-        startActivity(new Intent(MainActivity.this, FeedMeNowActivity.class));
+     //   feedMeNowItem.startActivity(new Intent(MainActivity.this, FeedMeNowActivity.class));
     }
 
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
      * Configures the FeedMeLater menu option
      */
     private void configureFeedMeLaterOption() {
-        startActivity(new Intent(MainActivity.this, FeedMeLaterActivity.class));
+      //  startActivity(new Intent(MainActivity.this, FeedMeLaterActivity.class));
 
     }
 }
