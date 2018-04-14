@@ -23,6 +23,9 @@
         <activity
             android:name=".FeedMeLaterActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".FeedMeNowActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
