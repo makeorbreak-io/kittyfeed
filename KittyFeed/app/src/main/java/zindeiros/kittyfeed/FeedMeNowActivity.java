@@ -1,14 +1,13 @@
 package zindeiros.kittyfeed;
 
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import java.util.Timer;
-import java.util.TimerTask;
+
+import zindeiros.kittyfeed.feed.Feed;
 
 public class FeedMeNowActivity extends AppCompatActivity {
     /**
@@ -52,6 +51,7 @@ public class FeedMeNowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(happyKittyImageView.getVisibility()!=View.VISIBLE){
+                    Feed.feedMeNow(FeedMeNowActivity.this.getApplicationContext());
                     changeKittyMood();
                 }
             }
@@ -67,7 +67,6 @@ public class FeedMeNowActivity extends AppCompatActivity {
             @Override
             public void run() {
                 changeToSadKitty();
-                System.out.println("ok");
             }
         }, KITTY_MOOD_DELAY_TIME);
     }
