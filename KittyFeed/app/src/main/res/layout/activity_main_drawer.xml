@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="100dp">
+
+    <group
+        android:background="@android:color/holo_red_light"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/feed_me_now"
+            android:icon="@drawable/canned_food"
+            android:title="@string/feed_me_now" />
+
+        <item
+            android:id="@+id/feed_me_later"
+            android:icon="@drawable/clock"
+            android:title="@string/feed_me_later" />
+    </group>
+
+</menu>
