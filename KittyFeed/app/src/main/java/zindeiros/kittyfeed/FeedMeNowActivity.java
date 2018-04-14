@@ -39,6 +39,9 @@ public class FeedMeNowActivity extends AppCompatActivity {
     private ImageButton feedMeButton;
 
     @Override
+    /**
+     * Instantiates FeedMeNowActivity
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedmenow);

@@ -9,12 +9,12 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/feed_me_now"
+            android:id="@+id/feed_me_now_item"
             android:icon="@drawable/canned_food"
             android:title="@string/feed_me_now" />
 
         <item
-            android:id="@+id/feed_me_later"
+            android:id="@+id/feed_me_later_item"
             android:icon="@drawable/clock"
             android:title="@string/feed_me_later" />
     </group>
