@@ -6,7 +6,6 @@ import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
 
-import zindeiros.kittyfeed.R;
 import zindeiros.kittyfeed.utils.RESTUtils;
 
 /**
@@ -17,7 +16,7 @@ public final class Feed {
     /**
      * Please do not enter
      */
-    private static final String HARDCODED_FEED_URL="http://172.29.1.229:5000/";
+    private static final String HARDCODED_FEED_URL="http://172.29.1.229:5000/Feed";
 
     /**
      * Activates the Feed Me Now functionality

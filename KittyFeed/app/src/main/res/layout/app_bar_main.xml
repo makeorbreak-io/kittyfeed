@@ -6,7 +6,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_red_light" />
+        android:background="@android:color/transparent" />
     <include layout="@layout/content_main"/>
 </android.support.design.widget.AppBarLayout>
 

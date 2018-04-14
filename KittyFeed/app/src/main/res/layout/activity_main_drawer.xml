@@ -4,7 +4,7 @@
     android:layout_height="100dp">
 
     <group
-        android:background="@android:color/holo_red_light"
+        android:background="@android:color/transparent"
         android:checkableBehavior="single">
 
         <item

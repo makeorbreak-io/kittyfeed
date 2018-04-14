@@ -38,8 +38,8 @@ public class FeedMeNowActivity extends AppCompatActivity {
      * Configures current Activity ImageView's
      */
     private void configureImageViews(){
-        happyKittyImageView=(ImageView)findViewById(R.id.happyKitty);
-        sadKittyImageView=(ImageView)findViewById(R.id.sadKitty);
+        happyKittyImageView=findViewById(R.id.happyKitty);
+        sadKittyImageView=findViewById(R.id.sadKitty);
     }
 
     /**
