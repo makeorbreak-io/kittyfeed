@@ -5,7 +5,6 @@
     android:id="@+id/main_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@android:style/Theme.Black.NoTitleBar"
     tools:context=".FeedMeNowActivity">
 
     <android.support.v7.widget.GridLayout
@@ -45,6 +44,7 @@
             android:id="@+id/imageButton"
             android:layout_width="162dp"
             android:layout_height="105dp"
+            android:background="@android:color/transparent"
             android:scaleType="fitCenter"
             app:layout_column="6"
             app:layout_row="9"
