@@ -6,4 +6,8 @@
     <string name="main_page_text">Please, feed me</string>
     <string name="beginning_hour">Choose the beginning hour:</string>
     <string name="choose_the_interval">Choose the time interval:</string>
+    <string name="once">Just this time</string>
+    <string name="eight_eight_hours">8 in 8 hours</string>
+    <string name="four_four_hours">4 in 4 hours</string>
+    <string name="twelve_twelve_hours">12 in 12 hours</string>
 </resources>

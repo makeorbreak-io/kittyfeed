@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerItems">
+        <item>@string/once</item>
+        <item>@string/four_four_hours</item>
+        <item>@string/eight_eight_hours</item>
+        <item>@string/twelve_twelve_hours</item>
+    </string-array>
+</resources>
