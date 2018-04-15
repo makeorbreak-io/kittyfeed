@@ -27,11 +27,6 @@ This device alows users to dispense food to their pet anywhere using only an and
 - João Freitas - Android application control
 - Rita Gonçalves - Android application control
 
-### Promo Video
-
-[![Promo](Promo/intro.png)](https://youtu.be/lGCXeUyFwLc)
-
-
 ### Icons Used
 
 - [Kitty Icons](https://www.flaticon.com/packs/kitty-avatars-2)
@@ -46,3 +41,7 @@ This device alows users to dispense food to their pet anywhere using only an and
 - The project is licensed under **MIT**
 - The icons used can found at [**Flaticon**](https://www.flaticon.com)
 - All of them are licensed under the [**Flaticon Basic License**](https://file000.flaticon.com/downloads/license/license.pdf)
+
+### Promo Video
+
+[![Promo](Promo/intro.png)](https://youtu.be/lGCXeUyFwLc)
