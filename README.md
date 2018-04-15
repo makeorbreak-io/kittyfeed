@@ -4,8 +4,10 @@ Feed your cat everywhere, even when you're not around! 🐱
 
 ## About
 
-KittyFeed is a remote IoT project made during the Make Or Break 2018 Hackathon
+KittyFeed is a remote IoT project made during the Make Or Break 2018 Hackathon.
+
 It consists in an automatic cat feeder that is connected to the internet.
+
 This device alows users to dispense food to their pet anywhere using only an android APP.
 
 ## Technology Used
