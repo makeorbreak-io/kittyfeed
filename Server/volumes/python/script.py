@@ -1,4 +1,5 @@
 
+
 from flask import Flask,render_template
 #from flaskext.mysql import MySQL
 from flask import jsonify
@@ -9,11 +10,14 @@ import requests
 import sys
 import MySQLdb
 import time
+import sched
+from datetime import datetime
+from datetime import timedelta
+import threading
 print("V1")
 
 app = Flask(__name__)
 
-# session = { 'db':"sssss" }
 
 import peewee
 from peewee import *
@@ -31,8 +35,10 @@ class Food(peewee.Model):
 
 
 class Horario(peewee.Model):
-    TIME = peewee.TextField()
-    INFO = peewee.TextField(default="err")
+    HORAS = peewee.TextField()
+    MIN = peewee.TextField()
+    STATE = peewee.TextField()
+    # MIN = peewee.IntegerField()
 
     class Meta:
         database = db
@@ -43,15 +49,52 @@ class Horario(peewee.Model):
 Horario.create_table()
 Food.create_table()
 
+
+
+
+def trabalhador(n):
+    time.sleep(n)
+    print('Dar comdia', file=sys.stderr)
+    try:
+        res = requests.post('http://172.29.9.108:5002/open', json={"open": "true"})
+    except:
+        print("\n Erro no envio para o PI!!!!!!!!!!!!!\n", file=sys.stderr)
+
+    food = Food(TIME=time.strftime('%l:%M%p %Z on %b %d, %Y'), Info=feed)
+    food.save()
+    print('Dar comdia',file=sys.stderr)  # b will never complete because it is waiting on a.
+    return 5
+
+def master(tempoo): # calcula quanto tempo tem de esperar (tem de receber um vector com dois valors)
+
+    d = timedelta(hours=int(tempoo[0]),minutes=int(tempoo[1]))
+    sec = d.total_seconds()
+    print(time.strftime('%H'), file=sys.stderr)
+    print(time.strftime('%M'), file=sys.stderr)
+    horas_s= (int(time.strftime('%H'))+1)*60*60
+    mins_s = int(time.strftime('%M'))*60
+
+    agora = horas_s+mins_s
+
+    print(horas_s, file=sys.stderr)
+    print(mins_s, file=sys.stderr)
+
+    print((sec-agora), file=sys.stderr)
+    #k = time.sleep(d.total_seconds()-time.time())
+    return (abs(sec-agora)*0.25)
+
+
 @app.before_first_request
 def function_to_run_only_once():
 
+    horas = Horario.filter(HORAS=time.strftime('%H'),MIN=time.strftime('%M'),STATE='false')
+    if Horario.HORAS:
+        for tempo in Horario.filter(HORAS="10"):
+            print(tempo.HORAS, file=sys.stderr)
 
-    food = Food(TIME="me", Info='Peewee is cool')
-    food.save()
-    for food in Food.filter(TIME="me"):
-        print (food.Info,file=sys.stderr)
-    return
+    # for food in Food.filter(TIME="me"):
+    #     print (food.Info,file=sys.stderr)
+    # return
 
 @app.route("/")
 def hello():
@@ -78,34 +121,55 @@ def invalid_request(error):
 # nova versao ---------------
 
 
+@app.route('/config')
+def db_dumps():
+    text= []
+    for food in Horario:
+        text=[food.HORAS]+text[:]
 
-class tempo:
-    def __init__(self):
-        tempo.horas = []
-        tempo.min = []
+    return(make_response(jsonify({'TIME': text}),200))
+@app.route('/set',methods=['POST'])
+def ler_dados():
+    if request.method == 'POST':
+        req_data = request.get_json()
+        horas = req_data['horas']
+        #mins = req_data['mins']
+        reset = req_data['reset']
+        if reset == 'true':
 
-@app.route('/Feed',  methods=['GET','POST'])
+            query = Horario.delete()
+            query.execute()
+        RELOGIO=[]
+        for i in range(len(horas)):
+            dados = horas[i].split(':')
+            tempoo = Horario(HORAS=dados[0],MIN=dados[1],STATE='false')
+            # print(int(dados), file=sys.stderr)
+            algoo = master(dados)
+            temp_1 = threading.Thread(target=trabalhador,args=(algoo,))
+            RELOGIO.append(temp_1)
+            temp_1.start()
+
+            tempoo.save()
+        now = datetime.now()
+
+        run_at = now + timedelta(hours=3)
+        delay = (run_at - now).total_seconds()
+        # threading.Timer(delay, self.update).start()
+
+            #print("{} - {}:{}".format(i,horas[i],mins[i]),file=sys.stderr)
+        #make_response(jsonify({'horas': horas[:]}),200)
+    return ('suup')
+
+@app.route('/Feed',  methods=['POST'])
 def handler():
-    # db = session.get('db', None)
-    db = MySQLDatabase('KittyFeed', host='mysql', user='root', passwd='mypassword')
-    class Horario(peewee.Model):
-        TIME = peewee.TextField()
-        Enable = peewee.TextField()
-
-        class Meta:
-            database = db
-
 
 
     if request.method == 'POST':
         req_data = request.get_json()
         feed = req_data['feed']
-        # repetir = req_data['repetir']
-        # tempo.horas = req_data['horas']
-        # min = req_data['min']
         if feed == 'true':
             try:
-                res = requests.post('http://172.29.1.229:5002/open', json={"open": "true"})
+                res = requests.post('http://172.29.9.108:5002/open', json={"open": "true"})
             except:
                 print ("\n chegou \n",file=sys.stderr)
 
@@ -118,9 +182,13 @@ def handler():
                 # "tempo:{}:{}".format(repetir,tempo.horas[0],min[0]))
 
     return("OPS deu errro {} ")
+
+
+
+    # print('\nDeitar comida: {}\n'.format(Horario.HORAS),file=sys.stderr)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
-
 
 
 #  curl -i -H "Content-Type: application/json" -X POST -d '{"username":"mahesh@rocks", "email": "mahesh99@gmail.com","password": "mahesh123", "name":"Mahesh", "id":"20" }' http://localhost:5000/api/v1/users
